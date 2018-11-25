@@ -104,3 +104,11 @@ venv.bak/
 .mypy_cache/
 
 \.idea/
+
+results/rebin_result/
+
+data/
+
+results/
+
+\.DS_Store
