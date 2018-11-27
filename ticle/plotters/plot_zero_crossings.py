@@ -8,6 +8,8 @@ from ticle.analysis.analysis import count_zero_crossings,boxcar_smoothing
 pl.rc('xtick', labelsize='x-small')
 pl.rc('ytick', labelsize='x-small')
 pl.rc('font', family='serif')
+pl.rcParams.update({'font.size': 20})
+pl.tight_layout()
 
 path = os.getcwd()
 zc_dir = f"{path}/results/zc"
@@ -48,7 +50,7 @@ for data in data_list:
     pl.axhline(y=0,linestyle='dashed',color='k',alpha=0.6)
     pl.title(f"Boxcar smoothed {star}")
 
-    text =  [("description",rf"$P_{{gues}}$=$2T/n_{{zc}}$"),
+    text =  [("description",rf"$P_{{guess}}$=$2T/n_{{zc}}$"),
              ("zc_result",rf"$P_{{guess}}={p_guess}$ days$\leftrightarrow P_{{literature}} = {data[2]}$ days")]
 
     for descr,txt in text:
@@ -59,7 +61,7 @@ for data in data_list:
             pl.axvline(x=smoothed[0][i],linestyle='dotted',color='red')
 
         pl.ylabel("Flux")
-        pl.title("Zero crossings {star}")
+        pl.title(f"Zero crossings {star}")
         pl.text(0.5, -0.1, txt,
                 size=14, ha='center', transform=pl.gca().transAxes)
         fig.savefig(f"{res_dir}/{star}_{descr}.pdf")

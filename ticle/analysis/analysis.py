@@ -134,7 +134,7 @@ def get_closest_significant_period(f_data : np.ndarray, p_guess : float) -> floa
 
     f_data = np.array((f_data[0][1:],f_data[1][1:]))
 
-    peaks,_ = find_peaks(f_data[1],height=np.mean(f_data[1]))
+    peaks,_ = find_peaks(f_data[1],height=np.mean(f_data[1])/2)
     x_data = 1/f_data[0][peaks] - p_guess
 
     x_sort = np.argsort(np.abs(x_data))

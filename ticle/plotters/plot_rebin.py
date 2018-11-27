@@ -9,6 +9,8 @@ from ticle.analysis.analysis import get_significant_periods,boxcar_smoothing,cou
 pl.rc('xtick', labelsize='x-small')
 pl.rc('ytick', labelsize='x-small')
 pl.rc('font', family='serif')
+pl.rcParams.update({'font.size': 20})
+pl.tight_layout()
 
 path = os.getcwd()
 rebin_result_dir = f"{path}/results/rebin_result"

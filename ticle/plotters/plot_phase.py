@@ -8,6 +8,8 @@ from ticle.analysis.analysis import get_phases,normalize_phase
 pl.rc('xtick', labelsize='x-small')
 pl.rc('ytick', labelsize='x-small')
 pl.rc('font', family='serif')
+pl.rcParams.update({'font.size': 20})
+pl.tight_layout()
 
 path = os.getcwd()
 phase_dir = f"{path}/results/phase_plots"
@@ -41,7 +43,7 @@ for data in data_list:
     for title,save_text,period in p:
         masks = get_phases(t_series,period)
 
-        fig_phase = pl.figure(figsize=(10, 7))
+        fig_phase = pl.figure(figsize=(10,7))
 
         for i in masks:
             plot_data = normalize_phase(np.array((t_series[0][i],t_series[1][i])))
@@ -52,7 +54,7 @@ for data in data_list:
         pl.title(title)
         fig_phase.savefig(f"{res_dir}/{star}_{save_text}_phase_.pdf")
 
-        fig_lightcurve = pl.figure(figsize=(10, 7))
+        fig_lightcurve = pl.figure(figsize=(10,7))
 
         for i in masks:
             pl.plot(t_series[0][i],t_series[1][i],linewidth = 1)

@@ -8,6 +8,8 @@ from ticle.analysis.analysis import get_significant_periods
 pl.rc('xtick', labelsize='x-small')
 pl.rc('ytick', labelsize='x-small')
 pl.rc('font', family='serif')
+pl.rcParams.update({'font.size': 20})
+pl.tight_layout()
 
 path = os.getcwd()
 sigma_pdm_dir = f"{path}/results/sigma_pdm"
@@ -49,10 +51,10 @@ for data in data_list:
 
     pdm_fig = pl.figure(figsize=(10, 7))
     pl.plot(periods, sigma_vals, color='k', markersize=3,alpha=0.5)
-    pl.plot(periods,sigma_vals,'x',color='k',markersize=3)
+    pl.plot(periods, sigma_vals,'x',color='k',markersize=3)
     p_guess = "%.2f" % float(data[1])
     pl.axvline(x=data[1],color='blue',alpha=0.6,linestyle='dashed',label=rf"$P_{{guess}}={p_guess}$ days")
-    pl.xlabel("Period(days)")
+    pl.xlabel(r"Period(days)")
     pl.ylabel(r"$\Theta_{pdm}$")
     pl.legend()
     pl.title(f"PDM {star}")

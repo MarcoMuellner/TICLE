@@ -9,6 +9,8 @@ from ticle.analysis.analysis import get_significant_periods,boxcar_smoothing,cou
 pl.rc('xtick', labelsize='x-small')
 pl.rc('ytick', labelsize='x-small')
 pl.rc('font', family='serif')
+pl.rcParams.update({'font.size': 20})
+pl.tight_layout()
 
 path = os.getcwd()
 f_space_dir = f"{path}/results/f_space"
@@ -55,7 +57,7 @@ for data in data_list:
     f_space_fig = pl.figure(figsize=(10, 7))
 
     pl.plot(f,p,color='k')
-    pl.xlabel("Frequency (c/d)")
+    pl.xlabel(r"Frequency ($d^{-1}$)")
     pl.ylabel("Power")
     pl.axvline(x=1 / p_pdm, label=f"1/$P_{{pdm}}$=1/{p_pdm_string}",color='blue',linestyle='dashed',alpha=0.7)
     pl.axvline(x=1 / p_f, label=f"1/$P_{{f}}$=1/{p_f_string}", color='cyan', linestyle='dashed')
